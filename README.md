@@ -27,7 +27,13 @@ Iedereen in Vlaanderen, maar vooral op jongeren gemikt.
 | Week <sub>(aangeduid met de maandag van die week)</sub> | Objective                                  |
 | ------------------------------------------------------- | ------------------------------------------ |
 | 19/10                                                   | Rough draft Homepage + Supabase connection |
-| 26/10                                                   |                                            |
+| 26/10                                                   | Figure out Supabase                        |
+| 02/11                                                   | Create `About` page                        |
+| 09/11                                                   | Finetuning of the two existing pages       |
+| 16/11 - 23/11                                           | Figuring out how to verify psychologists   |
+| 30/11                                                   | Creating chat feature                      |
+| 07/11                                                   | GDPR                                       |
+| 14/11 - ...                                             | ...                                        |
 
 ## Competitors
 
