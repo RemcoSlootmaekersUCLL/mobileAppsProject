@@ -24,19 +24,20 @@ Iedereen in Vlaanderen, maar vooral op jongeren gemikt.
 
 ## Roadmap
 
-| Week <sub>(aangeduid met de maandag van die week)</sub> | Objective                                  |
-| ------------------------------------------------------- | ------------------------------------------ |
-| 19/10                                                   | Rough draft Homepage + Supabase connection |
-| 26/10                                                   | Figure out Supabase                        |
-| 02/11                                                   | Create `About` page                        |
-| 09/11                                                   | Finetuning of the two existing pages       |
-| 16/11 - 23/11                                           | Figuring out how to verify psychologists   |
-| 30/11                                                   | Creating chat feature                      |
-| 07/11                                                   | GDPR                                       |
-| 14/11 - ...                                             | ...                                        |
+| Week <sub>(aangeduid met de maandag van die week)</sub> | Objective                                                                |
+| ------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 19/10                                                   | Rough draft Homepage + Supabase connection                               |
+| 26/10                                                   | Figure out Supabase                                                      |
+| 02/11                                                   | Create `About` page                                                      |
+| 09/11                                                   | Finetuning of the two existing pages                                     |
+| 16/11 - 23/11                                           | Figuring out how to verify psychologists and implementing login for them |
+| 30/11                                                   | Creating chat feature                                                    |
+| 07/12                                                   | GDPR                                                                     |
+| 14/12                                                   | Getting the app Native                                                   |
+| 21/12 - deadline                                        | Bughunting & testing                                                     |
 
 ## Competitors
 
 BloomUp - Alleen wordt dit meer gebruikt door werkgevers en scholen.\
 OpenUp - Begint in België op te komen. Heeft nu ook Belgische investeerders. Account nodig, dus niet anoniem.\
-Awel - Kan anoniem als je dit wil, maar een forum is toch nog anders dan een 1-op-1 gesprek.\
+Awel - Kan anoniem als je dit wil, maar een forum is toch nog anders dan een 1-op-1 gesprek.
