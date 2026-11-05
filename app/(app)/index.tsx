@@ -6,9 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StyledButton } from "@/components/StyledButton";
 import Header from "@/components/Header";
 import HomeIntro from "@/components/HomeIntro";
-
-const APP_NAME = "AnoTalks";
-const RETENTION_DAYS = 7; // retention policy
+import ExtraHomeInfo from "@/components/ExtraHomeInfo";
 
 const ADJECTIVES = [
   "Stille",
@@ -29,29 +27,6 @@ const ANIMALS = [
   "Uil",
   "Zeehond",
   "Konijn",
-];
-
-// More serious moments can lead to these being necessary
-const STEPS = [
-  {
-    title: "Kies een onderwerp",
-    body: "Kies wat past, of laat het open. Niets is verplicht.",
-  },
-  {
-    title: "Krijg een match",
-    body: "Een officiële psycholoog zal aan je worden toegewezen.",
-  },
-  {
-    title: "Praat via berichten",
-    body: "Zeg zo veel of zo weinig als je maar wilt. Je kan stoppen wanneer je wil.",
-  },
-];
-
-// Anonymous texting
-const PRIVACY = [
-  "Geen e-mail of telefoonnummer",
-  "Een willekeurige bijnaam die je kan veranderen",
-  `Berichten worden automatisch verwijderd na ${RETENTION_DAYS} dagen`,
 ];
 
 const color = {
@@ -121,42 +96,7 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
         </Pressable>
         <Text style={styles.availability}>{availability}</Text>
 
-        {/* How it works: a real sequence, so the numbering carries meaning */}
-        <Text style={[styles.sectionTitle, styles.sectionGap]}>
-          Hoe het werkt
-        </Text>
-        <View>
-          {STEPS.map((step, i) => (
-            <View key={step.title} style={styles.step}>
-              <View style={styles.stepRail}>
-                <View style={styles.stepNumber}>
-                  <Text style={styles.stepNumberText}>{i + 1}</Text>
-                </View>
-                {i < STEPS.length - 1 && <View style={styles.stepLine} />}
-              </View>
-              <View style={styles.stepBody}>
-                <Text style={styles.stepTitle}>{step.title}</Text>
-                <Text style={styles.stepText}>{step.body}</Text>
-              </View>
-            </View>
-          ))}
-        </View>
-
-        {/* Privacy */}
-        <Text style={[styles.sectionTitle, styles.sectionGap]}>
-          Jouw privacy
-        </Text>
-        <View style={styles.privacyList}>
-          {PRIVACY.map((line) => (
-            <Text key={line} style={styles.privacyItem}>
-              {line}
-            </Text>
-          ))}
-        </View>
-        <Text style={styles.footnote}>
-          Dit is een eerste gesprek, geen therapie. Als je verder wil gaan, kun
-          je de contactgegevens vragen van je gesprekspartner.
-        </Text>
+        <ExtraHomeInfo />
       </ScrollView>
 
       <View style={styles.crisisBar}>
@@ -178,80 +118,6 @@ const styles = StyleSheet.create({
   content: { paddingHorizontal: 22, paddingTop: 12, paddingBottom: 120 },
   pressed: { opacity: 0.75 },
 
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  appName: {
-    fontFamily: "serif",
-    fontSize: 20,
-    color: color.ink,
-    letterSpacing: 0.3,
-  },
-  anonBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: color.line,
-    borderRadius: 999,
-    paddingVertical: 5,
-    paddingHorizontal: 11,
-  },
-  anonDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 4,
-    backgroundColor: color.lake,
-    marginRight: 7,
-  },
-  anonText: { fontSize: 13, color: color.inkSoft },
-
-  headline: {
-    fontFamily: "serif",
-    fontSize: 34,
-    lineHeight: 40,
-    color: color.ink,
-    marginTop: 30,
-  },
-  lede: {
-    fontSize: 16,
-    lineHeight: 23,
-    color: color.inkSoft,
-    marginTop: 12,
-    maxWidth: 340,
-  },
-
-  nickPanel: {
-    backgroundColor: color.lakeTint,
-    borderRadius: 22,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    marginTop: 26,
-  },
-  nickLabel: { fontSize: 14, color: color.inkSoft },
-  nickName: {
-    fontFamily: "serif",
-    fontSize: 30,
-    color: color.ink,
-    marginTop: 4,
-  },
-  nickButton: { alignSelf: "flex-start", marginTop: 12, paddingVertical: 6 },
-  nickButtonText: {
-    fontSize: 15,
-    color: color.lake,
-    fontWeight: "600",
-    textDecorationLine: "underline",
-  },
-
-  sectionTitle: {
-    fontFamily: "serif",
-    fontSize: 22,
-    color: color.ink,
-    marginTop: 30,
-  },
-  sectionGap: { marginTop: 40 },
-
   cta: {
     backgroundColor: color.lake,
     borderRadius: 14,
@@ -267,44 +133,6 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
 
-  step: { flexDirection: "row" },
-  stepRail: { alignItems: "center", width: 36 },
-  stepNumber: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    borderWidth: 1.5,
-    borderColor: color.lake,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 16,
-  },
-  stepNumberText: { fontSize: 14, fontWeight: "600", color: color.lake },
-  stepLine: { flex: 1, width: 1.5, backgroundColor: color.line, marginTop: 4 },
-  stepBody: { flex: 1, paddingTop: 16, paddingBottom: 8, paddingLeft: 10 },
-  stepTitle: { fontSize: 16, fontWeight: "600", color: color.ink },
-  stepText: {
-    fontSize: 15,
-    lineHeight: 21,
-    color: color.inkSoft,
-    marginTop: 3,
-  },
-
-  privacyList: { marginTop: 12 },
-  privacyItem: {
-    fontSize: 15,
-    color: color.ink,
-    paddingVertical: 11,
-    borderBottomWidth: 1,
-    borderBottomColor: color.line,
-  },
-  footnote: {
-    fontSize: 14,
-    lineHeight: 20,
-    color: color.inkSoft,
-    marginTop: 18,
-  },
-
   crisisBar: {
     paddingHorizontal: 22,
     paddingVertical: 12,
@@ -312,27 +140,4 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: "#C9D4D9",
   },
-  crisisButton: {
-    backgroundColor: color.alertTint,
-    borderWidth: 1,
-    borderColor: color.alert,
-    borderRadius: 14,
-    paddingVertical: 14,
-    alignItems: "center",
-  },
-  crisisButtonText: { color: color.alert, fontSize: 16, fontWeight: "600" },
-  backdrop: { flex: 1, backgroundColor: "rgba(27, 42, 53, 0.45)" },
-  lineRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: color.white,
-    borderRadius: 14,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    marginBottom: 10,
-  },
-  lineInfo: { flex: 1, paddingRight: 12 },
-  lineName: { fontSize: 16, fontWeight: "600", color: color.ink },
-  lineNote: { fontSize: 14, color: color.inkSoft, marginTop: 2 },
-  lineNumber: { fontFamily: "serif", fontSize: 26, color: color.alert },
 });
