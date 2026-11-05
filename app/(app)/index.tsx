@@ -286,26 +286,6 @@ const styles = StyleSheet.create({
   },
   sectionGap: { marginTop: 40 },
 
-  chips: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: 14,
-    marginRight: -8,
-  },
-  chip: {
-    borderWidth: 1,
-    borderColor: color.line,
-    backgroundColor: color.white,
-    borderRadius: 999,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    marginRight: 8,
-    marginBottom: 8,
-  },
-  chipSelected: { backgroundColor: color.lake, borderColor: color.lake },
-  chipText: { fontSize: 15, color: color.ink },
-  chipTextSelected: { color: color.white, fontWeight: "600" },
-
   cta: {
     backgroundColor: color.lake,
     borderRadius: 14,
@@ -375,23 +355,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   crisisButtonText: { color: color.alert, fontSize: 16, fontWeight: "600" },
-
   backdrop: { flex: 1, backgroundColor: "rgba(27, 42, 53, 0.45)" },
-  sheet: {
-    backgroundColor: color.mist,
-    borderTopLeftRadius: 26,
-    borderTopRightRadius: 26,
-    paddingHorizontal: 22,
-    paddingTop: 26,
-    paddingBottom: 34,
-  },
-  sheetTitle: { fontFamily: "serif", fontSize: 24, color: color.ink },
-  sheetLede: {
-    fontSize: 15,
-    color: color.inkSoft,
-    marginTop: 6,
-    marginBottom: 14,
-  },
   lineRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -405,6 +369,4 @@ const styles = StyleSheet.create({
   lineName: { fontSize: 16, fontWeight: "600", color: color.ink },
   lineNote: { fontSize: 14, color: color.inkSoft, marginTop: 2 },
   lineNumber: { fontFamily: "serif", fontSize: 26, color: color.alert },
-  sheetClose: { alignItems: "center", paddingVertical: 14, marginTop: 4 },
-  sheetCloseText: { fontSize: 16, color: color.inkSoft },
 });
