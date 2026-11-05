@@ -2,10 +2,7 @@ import TopicSelector from "@/components/TopicSelector";
 import CrisisModal from "@/components/CrisisModal";
 import React, { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { StyledButton } from "@/components/StyledButton";
 
 const APP_NAME = "AnoTalks";
@@ -95,8 +92,6 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
     psychologistsOnline > 0
       ? `${psychologistsOnline} ${psychologistsOnline === 1 ? "psycholoog is" : "psychologen zijn"} nu beschikbaar`
       : "Er is niemand beschikbaar op dit moment. Je zal in een wachtrij geplaatst worden en verwittigd worden als er iemand vrij is.";
-
-  const insets = useSafeAreaInsets();
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
