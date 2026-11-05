@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyledButton } from "@/components/StyledButton";
+import Header from "@/components/Header";
+import HomeIntro from "@/components/HomeIntro";
 
 const APP_NAME = "AnoTalks";
 const RETENTION_DAYS = 7; // retention policy
@@ -99,47 +101,11 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.appName}>{APP_NAME}</Text>
-          <View
-            style={styles.anonBadge}
-            accessible
-            accessibilityLabel="Your identity is hidden"
-          >
-            <View style={styles.anonDot} />
-            <Text style={styles.anonText}>Anoniem</Text>
-          </View>
-        </View>
-
-        {/* Hero */}
-        <Text style={styles.headline}>
-          Zeg het luidop tegen iemand die luistert.
-        </Text>
-        <Text style={styles.lede}>
-          Heb een eerste gesprek met een psycholoog, zonder je naam te moeten
-          vermelden.
-        </Text>
-
-        {/* The memorable element: your anonymous name */}
-        <View style={styles.nickPanel}>
-          <Text style={styles.nickLabel}>Jij bent</Text>
-          <Text style={styles.nickName} accessibilityRole="header">
-            {nickname}
-          </Text>
-          <Pressable
-            onPress={() => setNickname(makeNickname())}
-            accessibilityRole="button"
-            accessibilityLabel="Get a different nickname"
-            style={({ pressed }) => [
-              styles.nickButton,
-              pressed && styles.pressed,
-            ]}
-          >
-            <Text style={styles.nickButtonText}>Ik wil een nieuwe naam</Text>
-          </Pressable>
-        </View>
-
+        <Header />
+        <HomeIntro
+          nickname={nickname}
+          onNewNickname={() => setNickname(makeNickname())}
+        />
         <TopicSelector
           topics={TOPICS}
           selected={selectedTopic}
