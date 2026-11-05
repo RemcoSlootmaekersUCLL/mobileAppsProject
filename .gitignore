@@ -8,6 +8,7 @@ cypress/screenshots/
 docs
 .claude
 .idea
+.vscode
 .expo
 *.pem
 .env
