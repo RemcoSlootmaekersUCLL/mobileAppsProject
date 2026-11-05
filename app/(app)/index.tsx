@@ -1,15 +1,12 @@
 import TopicSelector from "@/components/TopicSelector";
+import CrisisModal from "@/components/CrisisModal";
 import React, { useState } from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import {
-  Linking,
-  Modal,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
+import { StyledButton } from "@/components/StyledButton";
 
 const APP_NAME = "AnoTalks";
 const RETENTION_DAYS = 7; // retention policy
@@ -36,24 +33,6 @@ const ANIMALS = [
 ];
 
 // More serious moments can lead to these being necessary
-const CRISIS_LINES = [
-  {
-    name: "Zelfmoordlijn",
-    number: "1813",
-    note: "Gratis, voor wanneer je zelfmoordgedachten hebt.",
-  },
-  {
-    name: "Tele-Onthaal",
-    number: "106",
-    note: "Gratis, om iemand te hebben om tegen te praten.",
-  },
-  {
-    name: "Emergency services",
-    number: "112",
-    note: "Als jij of iemand anders in gevaar is.",
-  },
-];
-
 const STEPS = [
   {
     title: "Kies een onderwerp",
@@ -116,6 +95,8 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
     psychologistsOnline > 0
       ? `${psychologistsOnline} ${psychologistsOnline === 1 ? "psycholoog is" : "psychologen zijn"} nu beschikbaar`
       : "Er is niemand beschikbaar op dit moment. Je zal in een wachtrij geplaatst worden en verwittigd worden als er iemand vrij is.";
+
+  const insets = useSafeAreaInsets();
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
@@ -217,72 +198,20 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
         </Text>
       </ScrollView>
 
-      {/* Always visible crisis bar */}
       <View style={styles.crisisBar}>
-        <Pressable
+        <StyledButton
+          label="Ik heb dringend hulp nodig"
+          backgroundColor="#F6E4E1"
+          textColor="#A8433B"
           onPress={() => setCrisisOpen(true)}
-          accessibilityRole="button"
-          accessibilityLabel="Need urgent help? Show crisis numbers"
-          style={({ pressed }) => [
-            styles.crisisButton,
-            pressed && styles.pressed,
-          ]}
-        >
-          <Text style={styles.crisisButtonText}>Ik heb dringed hulp nodig</Text>
-        </Pressable>
-      </View>
-
-      {/* Crisis sheet */}
-      <Modal
-        visible={crisisOpen}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setCrisisOpen(false)}
-      >
-        <Pressable
-          style={styles.backdrop}
-          onPress={() => setCrisisOpen(false)}
         />
-        <View style={styles.sheet}>
-          <Text style={styles.sheetTitle}>
-            Je hoeft niet te wachten op een gesprek.
-          </Text>
-          <Text style={styles.sheetLede}>
-            Deze nummers zijn gratis. Klik om te bellen.
-          </Text>
-          {CRISIS_LINES.map((line) => (
-            <Pressable
-              key={line.number}
-              onPress={() => Linking.openURL(`tel:${line.number}`)}
-              accessibilityRole="button"
-              accessibilityLabel={`Call ${line.name} on ${line.number}`}
-              style={({ pressed }) => [
-                styles.lineRow,
-                pressed && styles.pressed,
-              ]}
-            >
-              <View style={styles.lineInfo}>
-                <Text style={styles.lineName}>{line.name}</Text>
-                <Text style={styles.lineNote}>{line.note}</Text>
-              </View>
-              <Text style={styles.lineNumber}>{line.number}</Text>
-            </Pressable>
-          ))}
-          <Pressable
-            onPress={() => setCrisisOpen(false)}
-            accessibilityRole="button"
-            style={styles.sheetClose}
-          >
-            <Text style={styles.sheetCloseText}>Sluiten</Text>
-          </Pressable>
-        </View>
-      </Modal>
+      </View>
+      <CrisisModal visible={crisisOpen} onClose={() => setCrisisOpen(false)} />
     </SafeAreaView>
   );
 }
 
 // Styling
-
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.mist },
   content: { paddingHorizontal: 22, paddingTop: 12, paddingBottom: 120 },
@@ -436,16 +365,11 @@ const styles = StyleSheet.create({
   },
 
   crisisBar: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
     paddingHorizontal: 22,
-    paddingTop: 12,
-    paddingBottom: 24,
-    backgroundColor: color.mist,
+    paddingVertical: 12,
+    backgroundColor: "#EDF1F3",
     borderTopWidth: 1,
-    borderTopColor: color.line,
+    borderTopColor: "#C9D4D9",
   },
   crisisButton: {
     backgroundColor: color.alertTint,
