@@ -115,7 +115,7 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
 // Styling
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.mist },
-  content: { paddingHorizontal: 22, paddingTop: 12, paddingBottom: 120 },
+  content: { paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
   pressed: { opacity: 0.75 },
 
   cta: {
