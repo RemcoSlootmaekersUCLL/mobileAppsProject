@@ -2,7 +2,7 @@ import Expectations from "@/components/aboutPage/Expectations";
 import FivePillars from "@/components/aboutPage/FivePillars";
 import Header from "@/components/Header";
 import { Link } from "expo-router";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const color = {
@@ -19,22 +19,28 @@ const color = {
 
 const AboutPage = () => {
   return (
-    <SafeAreaView style={styles.content} edges={["top"]}>
+    <SafeAreaView style={styles.safe} edges={["top"]}>
       <ScrollView
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
         <Header />
+        <View style={styles.section}>
+          <Expectations />
+        </View>
 
-        <FivePillars />
+        <View style={styles.sectionBreak} />
+
+        <View style={[styles.section, { marginTop: 18 }]}>
+          <FivePillars />
+        </View>
 
         <Link
           href={"https://www.compsy.be/nl_BE/le-code-de-deontologie"}
-          selectionColor={color.ink}
           target="_blank"
           style={styles.link}
         >
-          Meer gedetailleerde info op de website van de Psychologencommissie.
+          Meer informatie op de website van de Psychologencommissie.
         </Link>
       </ScrollView>
     </SafeAreaView>
@@ -44,9 +50,15 @@ const AboutPage = () => {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.mist },
   content: { paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
+  section: { marginTop: 32 },
+  sectionBreak: {
+    height: 1,
+    backgroundColor: color.line,
+  },
   link: {
     color: color.inkSoft,
     textDecorationLine: "underline",
+    marginTop: 12,
   },
 });
 

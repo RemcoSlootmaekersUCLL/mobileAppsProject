@@ -32,7 +32,13 @@ const PILLARS = [
 const FivePillars = () => {
   return (
     <View>
-      <Text style={styles.title}>Deontologische code: 5 pijlers</Text>
+      <Text style={styles.title}>2. Deontologische code: 5 pijlers</Text>
+
+      <Text style={styles.title}>De 5 Pijlers</Text>
+      <Text style={styles.intro}>
+        Deze vijf regels uit de deontologische code gelden voor elke psycholoog
+        op dit platform.
+      </Text>
 
       <View style={styles.list}>
         {PILLARS.map((pillar, i) => (
@@ -57,6 +63,12 @@ const FivePillars = () => {
 
 const styles = StyleSheet.create({
   title: { fontFamily: serif, fontSize: 22, color: "#1B2A35" },
+  intro: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: "#52626E",
+    marginTop: 6,
+  },
   list: { marginTop: 8 },
 
   row: { flexDirection: "row" },
