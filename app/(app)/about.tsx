@@ -1,3 +1,4 @@
+import Expectations from "@/components/aboutPage/Expectations";
 import FivePillars from "@/components/aboutPage/FivePillars";
 import Header from "@/components/Header";
 import { Link } from "expo-router";
@@ -31,6 +32,7 @@ const AboutPage = () => {
           href={"https://www.compsy.be/nl_BE/le-code-de-deontologie"}
           selectionColor={color.ink}
           target="_blank"
+          style={styles.link}
         >
           Meer gedetailleerde info op de website van de Psychologencommissie.
         </Link>
@@ -42,6 +44,10 @@ const AboutPage = () => {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: color.mist },
   content: { paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
+  link: {
+    color: color.inkSoft,
+    textDecorationLine: "underline",
+  },
 });
 
 export default AboutPage;
