@@ -1,12 +1,12 @@
-import TopicSelector from "@/components/TopicSelector";
+import TopicSelector from "@/components/HomePage/TopicSelector";
 import CrisisModal from "@/components/CrisisModal";
 import React, { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyledButton } from "@/components/StyledButton";
 import Header from "@/components/Header";
-import HomeIntro from "@/components/HomeIntro";
-import ExtraHomeInfo from "@/components/ExtraHomeInfo";
+import HomeIntro from "@/components/HomePage/HomeIntro";
+import ExtraHomeInfo from "@/components/HomePage/ExtraHomeInfo";
 
 const ADJECTIVES = [
   "Stille",

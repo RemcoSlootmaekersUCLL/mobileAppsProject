@@ -1,4 +1,4 @@
-import { Text } from "./primitives";
+import { Text } from "@/components/primitives";
 import { View, Pressable, StyleSheet } from "react-native";
 
 type Props = {
