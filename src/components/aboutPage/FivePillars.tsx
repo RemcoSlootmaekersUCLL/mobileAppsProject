@@ -34,7 +34,6 @@ const FivePillars = () => {
     <View>
       <Text style={styles.title}>2. Deontologische code: 5 pijlers</Text>
 
-      <Text style={styles.title}>De 5 Pijlers</Text>
       <Text style={styles.intro}>
         Deze vijf regels uit de deontologische code gelden voor elke psycholoog
         op dit platform.
