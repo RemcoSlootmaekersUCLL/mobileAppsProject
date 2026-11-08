@@ -81,12 +81,13 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
           nickname={nickname}
           onNewNickname={() => setNickname(makeNickname())}
         />
-        <TopicSelector
-          topics={TOPICS}
-          selected={selectedTopic}
-          onChange={setSelectedTopic}
-        />
-
+        <View style={{ marginTop: 12 }}>
+          <TopicSelector
+            topics={TOPICS}
+            selected={selectedTopic}
+            onChange={setSelectedTopic}
+          />
+        </View>
         {/* Main action */}
         <Pressable
           accessibilityRole="button"
