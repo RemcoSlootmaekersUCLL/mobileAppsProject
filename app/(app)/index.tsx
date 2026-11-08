@@ -1,12 +1,13 @@
 import TopicSelector from "@/components/HomePage/TopicSelector";
 import CrisisModal from "@/components/CrisisModal";
 import React, { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyledButton } from "@/components/StyledButton";
 import Header from "@/components/Header";
 import HomeIntro from "@/components/HomePage/HomeIntro";
 import ExtraHomeInfo from "@/components/HomePage/ExtraHomeInfo";
+import { useOnline } from "@/hooks/useOnline";
 
 const ADJECTIVES = [
   "Stille",
@@ -65,6 +66,13 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
   const [crisisOpen, setCrisisOpen] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
 
+  const online = useOnline();
+
+  function startConversation() {
+    // TODO: make transition to the queue
+    return true;
+  }
+
   const availability =
     psychologistsOnline > 0
       ? `${psychologistsOnline} ${psychologistsOnline === 1 ? "psycholoog is" : "psychologen zijn"} nu beschikbaar`
@@ -89,12 +97,13 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
           />
         </View>
         {/* Main action */}
-        <Pressable
-          accessibilityRole="button"
-          style={({ pressed }) => [styles.cta, pressed && styles.pressed]}
-        >
-          <Text style={styles.ctaText}>Start een gesprek</Text>
-        </Pressable>
+        <StyledButton
+          label={online === false ? "Je bent offline" : "Start een gesprek"}
+          disabled={online != true}
+          onPress={startConversation}
+          backgroundColor={color.lake}
+          textColor={color.white}
+        />
         <Text style={styles.availability}>{availability}</Text>
 
         <ExtraHomeInfo />

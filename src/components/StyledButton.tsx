@@ -10,6 +10,7 @@ interface StyledButtonProps {
   textColor?: string;
   isLoading?: boolean;
   testID?: string;
+  disabled?: boolean;
 }
 
 export function StyledButton({
@@ -20,16 +21,21 @@ export function StyledButton({
   textColor,
   isLoading = false,
   testID,
+  disabled = false,
 }: StyledButtonProps) {
+  const isDisabled = disabled || isLoading;
+
   return (
     <Pressable
       onPress={onPress}
-      disabled={isLoading}
-      style={[
+      disabled={isDisabled}
+      style={({ pressed }) => [
         styles.base,
         styles[variant],
         backgroundColor ? { backgroundColor } : null,
+        pressed && styles.pressed,
         isLoading && styles.disabled,
+        disabled && styles.disabled,
       ]}
       testID={testID}
     >
@@ -53,5 +59,6 @@ const styles = StyleSheet.create({
   },
   primary: {},
   secondary: {},
-  disabled: {},
+  pressed: { opacity: 0.85 },
+  disabled: { backgroundColor: "#C9D4D9" },
 });
