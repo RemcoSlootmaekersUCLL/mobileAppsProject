@@ -32,7 +32,7 @@ const PILLARS = [
 const FivePillars = () => {
   return (
     <View>
-      <Text style={styles.title}>De 5 Pijlers</Text>
+      <Text style={styles.title}>Deontologische code: 5 pijlers</Text>
 
       <View style={styles.list}>
         {PILLARS.map((pillar, i) => (
