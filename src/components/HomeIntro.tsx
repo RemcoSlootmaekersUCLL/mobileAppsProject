@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     fontSize: 34,
     lineHeight: 40,
     color: "#1B2A35",
-    marginTop: 30,
   },
   lede: {
     fontSize: 16,
