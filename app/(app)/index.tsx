@@ -62,7 +62,7 @@ type Props = {
 };
 
 export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
-  const [nickname, setNickname] = useState(makeNickname);
+  const [nickname, setNickname] = useState("");
   const [crisisOpen, setCrisisOpen] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
 
