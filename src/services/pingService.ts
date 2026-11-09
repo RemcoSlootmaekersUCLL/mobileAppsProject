@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
-const supabase = createClient(
-  process.env.EXPO_PUBLIC_SUPABASE_URL!,
-  process.env.EXPO_PUBLIC_SUPABASE_KEY!,
-);
+import Constants from "expo-constants";
+
+const { supabaseUrl, supabaseKey } = Constants.expoConfig?.extra ?? {};
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function ping(): Promise<Object> {
   const res = await supabase.functions.invoke("ping");
