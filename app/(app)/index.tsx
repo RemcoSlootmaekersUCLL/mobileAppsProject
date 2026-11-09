@@ -1,6 +1,6 @@
 import TopicSelector from "@/components/HomePage/TopicSelector";
 import CrisisModal from "@/components/CrisisModal";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyledButton } from "@/components/StyledButton";
@@ -65,6 +65,10 @@ export default function HomeScreen({ psychologistsOnline = 0 }: Props) {
   const [nickname, setNickname] = useState("");
   const [crisisOpen, setCrisisOpen] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+
+  useEffect(() => {
+    setNickname(makeNickname());
+  }, []);
 
   const online = useOnline();
 
